@@ -2,11 +2,12 @@ var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js'); // our custom middleware
 
-
 module.exports = function (app, express) {
   // Express 4 allows us to use multiple routers with their own configurations
   var userRouter = express.Router();
   var linkRouter = express.Router();
+  var codeRouter = express.Router();
+
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -22,7 +23,10 @@ module.exports = function (app, express) {
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
+  app.use('/', codeRouter);
+
   // inject our routers into their respective route files
   require('../users/userRoutes.js')(userRouter);
   require('../links/linkRoutes.js')(linkRouter);
+  require('../links/codeRoutes.js')(codeRouter);
 };

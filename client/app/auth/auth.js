@@ -21,10 +21,12 @@ angular.module('shortly.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.shortly', token);
+        console.log("SEE ME PLZ")
         $location.path('/links');
       })
       .catch(function (error) {
         console.error(error);
       });
   };
+
 });
