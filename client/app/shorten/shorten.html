@@ -1,10 +1,22 @@
 <div id='container'>
-  <form ng-submit = 'addLink()' novalidate>
-      <input class='text' type='url' name='url' ng-model = 'link.url' required>
-      <input type='submit' value='Shorten' ng-disabled = "notValid()">
-  </form>
-  <img class='spinner' src='assets/spiffygif_46x46.gif'>
-  <div class='message'></div>
+  <div class = 'creator'>
+    <form ng-submit = 'addLink()' novalidate>
+        <input class='text' type='url' name='url' ng-model = 'link.url' required>
+        <input type='submit' value='Shorten' ng-disabled = "notValid()">
+    </form>
+    <img class='spinner' src='assets/spiffygif_46x46.gif'>
+    <div class='message' >
+      <div class = 'link'>
+        <img src='assets/redirect_icon.png'/>
+          <div class='info'>
+            <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+            <div class='title'>{{link.title}}</div>
+            <div class='original'>{{link.url}}</div>
+            <a href='{{link.base_url}}/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 
