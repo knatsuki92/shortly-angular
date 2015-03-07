@@ -17,20 +17,25 @@ angular.module('shortly', [
     })
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      authenticate:true
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      authenticate:true
+
     })
-    .when('/signout', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
-    })
+    // .when('/signout', {
+    //   templateUrl: 'app/auth/signin.html',
+    //   controller: 'AuthController'
+    // })
     .when('/', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
-    })
+      controller: 'AuthController',
+      authenticate:true
+
+    });
 
 
 
@@ -65,7 +70,7 @@ angular.module('shortly', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     console.log(next.$$route);
-    if (next.$$route && !Auth.isAuth()) {
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
     }
   });

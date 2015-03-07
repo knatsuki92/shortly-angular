@@ -7,11 +7,11 @@
   </head>
   <body>
     <h1>Shortly</h1>
-    <div class='navigation'>
+    <div class='navigation' ng-controller = 'AuthController' ng-hide = '!isAuth()' >
     <ul>
       <li><a href='#/links' class='index'>All Links</a></li>
       <li><a href='#/shorten' class='create'>Shorten</a></li>
-      <li><a href='#' class='logout' ng-click = "Auth.signout()">Logout</a></li>
+      <li><a href='#' class='logout' ng-click = "signout()">Logout</a></li>
     </ul>
     </div>
 

@@ -29,4 +29,21 @@ angular.module('shortly.auth', [])
       });
   };
 
+  $scope.signout = function () {
+    Auth.signout();
+  };
+
+  $scope.isAuth = function () {
+    return Auth.isAuth();
+  };
+
+  $scope.notValid = function () {
+    if ($scope.user.username !== undefined && $scope.user.password !== undefined){
+      return ($scope.user.username.$dirty   &&
+             $scope.user.username.$invalid) ||
+             ($scope.user.password.$dirty   &&
+             $scope.user.password.$invalid);
+    }
+    return true;
+  };
 });

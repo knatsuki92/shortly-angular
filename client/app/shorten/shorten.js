@@ -12,5 +12,12 @@ angular.module('shortly.shorten', [])
     });
   };
 
+  $scope.notValid = function(){
+    if ($scope.link.url !== undefined){
+      return $scope.link.url.$dirty && $scope.link.url.$invalid;
+    }
+    return true;
+  };
+
 
 });
