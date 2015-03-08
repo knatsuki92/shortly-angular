@@ -2,6 +2,8 @@ angular.module('shortly.shorten', [])
 
 .controller('ShortenController', function ($scope, $location, Links) {
   $scope.link = {};
+  $scope.hasSubmitted = false;
+
   $scope.addLink = function(){
     Links.createLink($scope.link)
     .then(function(link){
@@ -10,6 +12,8 @@ angular.module('shortly.shorten', [])
     .catch(function(error){
       console.error(error);
     });
+
+    $scope.hasSubmitted = true;
   };
 
   $scope.notValid = function(){
